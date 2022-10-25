@@ -1,13 +1,13 @@
 import React, {useState} from 'react';
 import {
-  View,
-  StyleSheet,
-  TextInput,
-  Image,
   TouchableOpacity,
   Platform,
   TouchableNativeFeedback,
   Keyboard,
+  View,
+  StyleSheet,
+  TextInput,
+  Image,
 } from 'react-native';
 
 function AddTodo() {

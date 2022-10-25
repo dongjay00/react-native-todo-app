@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, StyleSheet, StatusBar} from 'react-native';
+import {StyleSheet, StatusBar, View, Text} from 'react-native';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 
 function DateHead({date}) {
