@@ -4,6 +4,7 @@ import DateHead from './src/components/DateHead';
 import {SafeAreaProvider, SafeAreaView} from 'react-native-safe-area-context';
 import AddTodo from './src/components/AddTodo';
 import Empty from './src/components/Empty';
+import TodoList from './src/components/TodoList';
 
 function App() {
   const today = new Date();
@@ -21,7 +22,7 @@ function App() {
           behavior={Platform.select({ios: 'padding'})}
           style={styles.avoid}>
           <DateHead date={today} />
-          <Empty />
+          {todos.length === 0 ? <Empty /> : <TodoList todos={todos} />}
           <AddTodo />
         </KeyboardAvoidingView>
       </SafeAreaView>
