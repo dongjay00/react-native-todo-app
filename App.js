@@ -1,7 +1,9 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {StyleSheet, KeyboardAvoidingView, Platform} from 'react-native';
-import DateHead from './src/components/DateHead';
 import {SafeAreaProvider, SafeAreaView} from 'react-native-safe-area-context';
+import AsyncStorage from '@react-native-community/async-storage';
+
+import DateHead from './src/components/DateHead';
 import AddTodo from './src/components/AddTodo';
 import Empty from './src/components/Empty';
 import TodoList from './src/components/TodoList';
@@ -13,6 +15,18 @@ function App() {
     {id: 2, text: '리액트 네이티브 기초 공부', done: false},
     {id: 3, text: '투두리스트 만들어보기', done: false},
   ]);
+
+  // 저장
+  useEffect(() => {
+    async function save() {
+      try {
+        await AsyncStorage.setItem('todos', JSON.stringify(todos));
+      } catch (e) {
+        console.log('Failed to save todos');
+      }
+    }
+    save();
+  }, [todos]);
 
   const onInsert = text => {
     // 새로 등록할 항목의 id를 구합니다.
